@@ -1,0 +1,47 @@
+{"quiz" : [
+    {
+        "question": "Indique que aspecto(s) se debe tener en cuenta antes de realizar una inversión:",
+        "answers": [
+            {"letter": "A", "option": "Realice la inversión en una entidad que no esté vigilada, esto le asegurará un mayor rendimiento", "answer": false},
+            {"letter": "B", "option": "Evalué los riesgos, tenga en cuenta el plazo de la inversión y establezca con anterioridad los gastos, comisiones e impuestos.", "answer": true},
+            {"letter": "C", "option": "Nunca tenga en cuenta los riesgos de la inversión, recuerde que estas se presentarán con el paso del tiempo.", "answer": false},
+            {"letter": "D", "option": "Una vez efectué la inversión tome un tiempo para revisar los prospectos y contratos que ha firmado.", "answer": false},
+        ]
+    },
+    {
+        "question": "Al tomar un crédito o préstamo la persona deberá:",
+        "answers": [
+            {"letter": "A", "option": "Esperar que la entidad se comunique para informarle el valor a pagar", "answer": false},
+            {"letter": "B", "option": "Dejar pasar el tiempo para que a la entidad se le olvide ese préstamo", "answer": false},
+            {"letter": "C", "option": "Irse del país para que no le sea cobrado el dinero", "answer": false},
+            {"letter": "D", "option": "Tener en cuenta las fechas en las cuáles debe pagar el dinero que le fue prestado con la respectiva tasa de interés", "answer": true},
+        ]
+    },
+    {
+        "question": "¿Qué es un interés de mora?",
+        "answers": [
+            {"letter": "A", "option": "Es una aplicación móvil para registrar las diferentes deudas que se posee", "answer": false},
+            {"letter": "B", "option": "Es el valor que debe ser asumido por incumplir el pago de una obligación", "answer": true},
+            {"letter": "C", "option": "Es donde existe una reinversión periódica de los intereses", "answer": false},
+            {"letter": "D", "option": "Es la tasa que establece una entidad financiera por el dinero que presta", "answer": false},
+        ]
+    },
+    {
+        "question": "Si recibe un correo electrónico de su entidad financiera con un link adjunto:",
+        "answers": [
+            {"letter": "A", "option": "Haga click en el link adjunto e ingrese con su usuario y clave", "answer": false},
+            {"letter": "B", "option": "Guarde el correo como contacto favorito para que lo identifique en su correo", "answer": false},
+            {"letter": "C", "option": "No haga click en el link adjunto y elimine de inmediato el mensaje", "answer": true},
+            {"letter": "D", "option": "Guarde el correo y lealo más tarde.", "answer": false},
+        ]
+    },
+    {
+        "question": "¿Qué es el grado de endeudamiento?",
+        "answers": [
+            {"letter": "A", "option": "Haga click en el link adjunto e ingrese con su usuario y clave", "answer": false},
+            {"letter": "B", "option": "Guarde el correo como contacto favorito para que lo identifique en su correo", "answer": true},
+            {"letter": "C", "option": "No haga click en el link adjunto y elimine de inmediato el mensaje", "answer": false},
+            {"letter": "D", "option": "Guarde el correo y lealo más tarde.", "answer": false},
+        ]
+    }
+]}
