@@ -67,21 +67,12 @@
                                     </li>
                                 }
                             } -->
-                            <li id="idAnswerLabel" class="lblAnswerClass"">
-                                <a href="javascript:void(0)">
-                                    <span id="letterAns">
-                                        
-                                    </span>
-                                    <span id="TextAns">
-
-                                    </span>
-                                </a>
-                            </li>
                         </ul>
                         <!-- <div id="loadingRequestAnswer" class="advice"><span>@ViewContext.HttpContext.GetGlobalResourceObject("App_GlobalResourcesGameFinancialStrategy", "LabelJuegoProcessAnswers").ToString()</span></div> -->
+                        <div id="loadingRequestAnswer" class="advice"></div>
                     </div>
-                    <!-- <div class="stars-footer">
-                        @for (int i = 0; i < sizeAnswersCorrect; i++)
+                    <div class="stars-footer">
+                    <!--    @for (int i = 0; i < sizeAnswersCorrect; i++)
                         {
                             <span>
                                 <img src="~/Content/images/game1/star-02.svg">
@@ -94,8 +85,8 @@
                             </span>
                         }
                         <span class="level">@string.Format("{0} {1}", @ViewContext.HttpContext.GetGlobalResourceObject("App_GlobalResourcesGameFinancialStrategy", "LabelJuegoNivel").ToString(), sizeAnswersCorrect)</span>
-                        
-                    </div> -->
+                        -->
+                    </div> 
                 </div>
             </div>
         </div>
@@ -106,54 +97,55 @@
     <script src="js/royal-slider-min.js"></script>
     <script src="js/bx-slider.js"></script>
     <script src="js/jquery.tooltipster.min.js"></script>
-    <script src="js/animation.js"></script>
+    <script src="js/a.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/GameFinancial.js"></script>
     <script type="text/javascript">
 
-        var timerValue = 30;
-        var selectedAnswer = false;
-        var typeHelp = {
-            PORTAL: 1,
-            TWITTER: 2,
-            CALL: 3
-        };
-        var requestQuestion = false;
+        // var timerValue = 30;
+        // var selectedAnswer = false;
+        // var typeHelp = {
+        //     PORTAL: 1,
+        //     TWITTER: 2,
+        //     CALL: 3
+        // };
+        // var requestQuestion = false;
         $(document).ready(function () {
 
-            fetch("js/data.js")
-                .then(json => alert(json));
+            // fetch("js/data.js")
+            //     .then(json => alert(json));
 
-            listQuestion();
+            // listQuestion();
 
-            $.ajax({
-                url: "./js/data.js",
-                dataType: "json",
-                type: "POST",
-                error: function (data)
-                {
-                console.log("error");
-                console.log(data);
-                alert("Error peticion");
-                },
-                success: function (datos) {
-                    console.log(datos);
-                    // var datos = JSON.parse(data);
-                    let html = '';
-                    let title = '<div class="question"><span id="lblHeaderQuestion">'+data[i].question+'</span></div>';
+            // $.ajax({
+            //     url: "./js/data.js",
+            //     dataType: "json",
+            //     type: "POST",
+            //     error: function (data)
+            //     {
+            //     console.log("error");
+            //     console.log(data);
+            //     alert("Error peticion");
+            //     },
+            //     success: function (datos) {
+            //         console.log(datos);
+            //         // var datos = JSON.parse(data);
+            //         let html = '';
+            //         let title = '<div class="question"><span id="lblHeaderQuestion">'+data[i].question+'</span></div>';
 
-                    var data = JSON.parse(datos);
-                    $.each(data, function(i)  {
-                        html += '<li id="idAnswerLabel" class="lblAnswerClass"">'+
-                            '<a href="javascript:void(0)">'+
-                                    '<span id="letterAns">'+data[i].answers.letter+'</span>'+
-                                    '<span id="TextAns">'+data[i].answers.option+'</span>'+
-                            '</a>'+
-                        '</li>'
-                    });
-                    $(".question-box").append(title);
-                    $(".question-box").append(html);
-                }
-            })
+            //         var data = JSON.parse(datos);
+            //         $.each(data, function(i)  {
+            //             html += '<li id="idAnswerLabel" class="lblAnswerClass"">'+
+            //                 '<a href="javascript:void(0)">'+
+            //                         '<span id="letterAns">'+data[i].answers.letter+'</span>'+
+            //                         '<span id="TextAns">'+data[i].answers.option+'</span>'+
+            //                 '</a>'+
+            //             '</li>'
+            //         });
+            //         $(".question-box").append(title);
+            //         $(".question-box").append(html);
+            //     }
+            // })
     
             $('.tooltip').tooltipster({
                 trigger: 'click',
@@ -166,7 +158,6 @@
                 left: "-=100%",
                 opacity: "1"
             }, 800);
-            verifyImageStyleHelp();
             $("#btnHelpQuestion").click(function ()
             {
     
@@ -227,53 +218,55 @@
             // });
         });
 
-        function listQuestion() {
+        // function listQuestion() {
 
             
-            $.ajax({
-                url: "js/data.json",
-                dataType: "json",
-                method: "POST",
-                success: function (data) {
-                    alert(data);
-                    // var datos = JSON.parse(data);
-                    let html = '';
-                    let title = '<div class="question"><span id="lblHeaderQuestion">'+data[i].question+'</span></div>';
+        //     $.ajax({
+        //         url: "js/data.json",
+        //         dataType: "json",
+        //         method: "POST",
+        //         success: function (data) {
+        //             alert(data);
+        //             // var datos = JSON.parse(data);
+        //             let html = '';
+        //             let title = '<div class="question"><span id="lblHeaderQuestion">'+data[i].question+'</span></div>';
 
-                    $.each(data, function(i)  {
-                        html += '<li id="idAnswerLabel" class="lblAnswerClass"">'+
-                            '<a href="javascript:void(0)">'+
-                                    '<span id="letterAns">'+data[i].answers.letter+'</span>'+
-                                    '<span id="TextAns">'+data[i].answers.option+'</span>'+
-                            '</a>'+
-                        '</li>'
-                    });
-                    $(".question-box").append(title);
-                    $(".question-box").append(html);
-                }
-            })
-        }
+        //             $.each(data, function(i)  {
+        //                 html += '<li id="idAnswerLabel" class="lblAnswerClass"">'+
+        //                     '<a href="javascript:void(0)">'+
+        //                             '<span id="letterAns">'+data[i].answers.letter+'</span>'+
+        //                             '<span id="TextAns">'+data[i].answers.option+'</span>'+
+        //                     '</a>'+
+        //                 '</li>'
+        //             });
+        //             $(".question-box").append(title);
+        //             $(".question-box").append(html);
+        //         }
+        //     })
+        // }
 
-        timer = setTimeout('temporizador()', 1000);
-        function temporizador() {
-            $(document).ready(function () {
-                if (timerValue != 0 && !selectedAnswer) {
-                    timerValue--;
-                    if (timerValue > 9) {
-                        $("#lblTimer").text(timerValue);
-                    }
-                    else {
-                        $("#lblTimer").text("0" + timerValue);
-                    }
-                    timer = setTimeout("temporizador()", 1000);
-                }
-                else {
-                    if (timerValue == 0) {
-                        NextQuestion();
-                    }
-                }
-            });
-        }
+        // timer = setTimeout('temporizador()', 1000);
+        // function temporizador() {
+        //     $(document).ready(function () {
+        //         if (timerValue != 0 && !selectedAnswer) {
+        //             timerValue--;
+        //             if (timerValue > 9) {
+        //                 $("#lblTimer").text(timerValue);
+        //             }
+        //             else {
+        //                 $("#lblTimer").text("0" + timerValue);
+        //             }
+        //             timer = setTimeout("temporizador()", 1000);
+        //         }
+        //         else {
+        //             if (timerValue == 0) {
+        //                 NextQuestion();
+        //                 let question;
+        //                 CurrentQuiz(question+1)
+        //             }
+        //         }
+        //     });
+        // }
         // function validateAnswer(idAnswer, idElement)
         // {
         //     $.ajax({
@@ -397,35 +390,35 @@
         //         }
         //     });
         // }
-        function verifyImageStyleHelp()
-        {
-            var isCheckedHelpPortal = '@(IsCheckedHelpPortal)'
-            var isCheckedFiftyPercent = '@(IsCheckedHelpFiftyPercent)'
-            var isCheckedHelpTwitter = '@(IsCheckedHelpTwitter)'
-            var isCheckedHelpCall = '@(IsCheckedHelpCall)'
-            console.log("Test colores");
-            console.log(isCheckedFiftyPercent);
-            if (isCheckedHelpPortal == 'True')
-            {
-                $('#divHelpPortal').addClass('disable-tool active');
-            }
-            if (isCheckedFiftyPercent == 'True')
-            {
-                $('#divHelpQuestion').addClass('disable-tool active');
-            }
-            if (isCheckedHelpTwitter == 'True')
-            {
-                $('#divHelpTwitter').addClass('disable-tool active');
-            }
-            if (isCheckedHelpCall == 'True')
-            {
-                $('#divHelpCall').addClass('disable-tool active');
-            }
+        // function verifyImageStyleHelp()
+        // {
+        //     var isCheckedHelpPortal = '@(IsCheckedHelpPortal)'
+        //     var isCheckedFiftyPercent = '@(IsCheckedHelpFiftyPercent)'
+        //     var isCheckedHelpTwitter = '@(IsCheckedHelpTwitter)'
+        //     var isCheckedHelpCall = '@(IsCheckedHelpCall)'
+        //     console.log("Test colores");
+        //     console.log(isCheckedFiftyPercent);
+        //     if (isCheckedHelpPortal == 'True')
+        //     {
+        //         $('#divHelpPortal').addClass('disable-tool active');
+        //     }
+        //     if (isCheckedFiftyPercent == 'True')
+        //     {
+        //         $('#divHelpQuestion').addClass('disable-tool active');
+        //     }
+        //     if (isCheckedHelpTwitter == 'True')
+        //     {
+        //         $('#divHelpTwitter').addClass('disable-tool active');
+        //     }
+        //     if (isCheckedHelpCall == 'True')
+        //     {
+        //         $('#divHelpCall').addClass('disable-tool active');
+        //     }
     
-        }
-        function NextQuestion() {
-            location.reload();
-        }
+        // }
+        // function NextQuestion() {
+        //     location.reload();
+        // }
     </script>
 </body>
 </html>

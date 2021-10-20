@@ -3891,7 +3891,7 @@ ul.list-comodines {
 .timer {
     font-size: 110px;
     color: #fff;
-    background: url(../images/game1/timer.svg) no-repeat;
+    background: url(../images/timer.svg) no-repeat;
     padding: 40px 50px 50px 50px;
     display: inline-block;
 }
