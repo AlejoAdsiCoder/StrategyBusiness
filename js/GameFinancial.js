@@ -1,5 +1,5 @@
 var timerValue = 31;
-var selectedAnswer = false;
+var selectedAnswer;
 var typeHelp = {
     PORTAL: 1,
     TWITTER: 2,
@@ -7,6 +7,8 @@ var typeHelp = {
 };
 var requestQuestion = false;
 
+let stage = document.querySelector("stage04");
+let questionBox = document.querySelector(".question-box");
 let lblHeaderQuestion = document.querySelector(".question-box #lblHeaderQuestion");
 let TextAns = document.querySelector(".question-box #TextAns");
 let respuestas = document.querySelector(".question-box .answers");
@@ -15,6 +17,7 @@ let NRespuestas = 0;
 let sizeAnswersCorrect;
 const sizeQuestiontotal = 25;
 let timer;
+let timerOn = 0;
 // let sizeAnswerIncorrect = sizeQuestionGame - sizeAnswersCorrect;
 let listAnswers = document.querySelector(".question-box .answers");
 
@@ -197,7 +200,12 @@ let question = 0;
 //   // console.log(question);
 
 // }
-
+// function startCount() {
+//   if (!timerOn) {
+//     timerOn = 1;
+//     temporizador();
+//   }
+// }
 
 // timer = setTimeout('temporizador()', 1000);
 function temporizador() {
@@ -214,6 +222,7 @@ function temporizador() {
                 $("#lblTimer").text("0" + timerValue);
             }
             timer = setTimeout("temporizador()", 1000);
+
             if(timerValue == 0){
 
               timerValue = 31;
@@ -235,7 +244,14 @@ function Next() {
   // starsFooter();
   // console.log(CurrentQuestion);
   dataAnswers = quiz[CurrentQuestion].answers;
+  
+  selectedAnswer = false;
+  // timerValue = 30;
   respuestas.innerHTML = `${dataAnswers.map(templateAnswers).join("")}`;
+  let cloneBox = questionBox.cloneNode(true);
+  console.log(cloneBox);
+  // stage.append(cloneBox);
+
   dataQuestion = quiz[CurrentQuestion].question;
   lblHeaderQuestion.innerHTML = dataQuestion;
 
@@ -259,10 +275,13 @@ function Next() {
   // }
 }
 
+// function stopTimer() {
+//   clearTimeout(timer);
+//   timerOn = 0;
+// }
+
 let timerAnswer = 5; 
 function indexAnswer(indexFull) {
-
-    console.log(quiz[indexFull].answers)
     // let AnswerClass = document.querySelector(".lblAnswerClass");
     // AnswerClass.forEach(element => {
     // element.addEventListener("click", function( event ) {
@@ -271,27 +290,34 @@ function indexAnswer(indexFull) {
   let selectAns;
     $( ".lblAnswerClass" ).each(function(index) {
       $(this).on("click", function(e) {
+        // stopTimer()
         $(this).addClass('select');
+        selectedAnswer = true;
         selectAns = this;
         setTimeout(function () {
           if(quiz[indexFull].answers[index].answer === 1) {
             console.log(this)
+            
             $(selectAns).addClass('correct');
+            
             setTimeout(function () {
               userAnswer(1)
-              timerValue = 30;
+              timerValue = 31;
+              location.reload();
               Next();
-              
+              temporizador();
             }, 2500)
+
           }
           else {
             console.log(this)
             $(selectAns).addClass('wrong');
             setTimeout(function () {
               // userAnswer(1)
-              timerValue = 30;
+              timerValue = 31;
+              location.reload();
               Next();
-
+              temporizador();
             }, 2500)
           }
 
