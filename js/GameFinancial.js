@@ -246,10 +246,15 @@ function Next() {
   dataAnswers = quiz[CurrentQuestion].answers;
   
   selectedAnswer = false;
+  $('#stage04').attr('style','left: 100%; opacity: 0');
+  $('#stage04').animate({
+    left: "-=100%",
+    opacity: "1"
+  }, 800);
   // timerValue = 30;
   respuestas.innerHTML = `${dataAnswers.map(templateAnswers).join("")}`;
-  let cloneBox = questionBox.cloneNode(true);
-  console.log(cloneBox);
+  // let cloneBox = questionBox.cloneNode(true);
+  // console.log(cloneBox);
   // stage.append(cloneBox);
 
   dataQuestion = quiz[CurrentQuestion].question;
@@ -303,7 +308,7 @@ function indexAnswer(indexFull) {
             setTimeout(function () {
               userAnswer(1)
               timerValue = 31;
-              location.reload();
+              // location.reload();
               Next();
               temporizador();
             }, 2500)
@@ -315,7 +320,7 @@ function indexAnswer(indexFull) {
             setTimeout(function () {
               // userAnswer(1)
               timerValue = 31;
-              location.reload();
+              // location.reload();
               Next();
               temporizador();
             }, 2500)

@@ -49,43 +49,10 @@
                     <div class="question-box">
                         <div class="question"><span id="lblHeaderQuestion"></span></div>
                         <ul class="answers">
-                            <!-- @if (Model.ListAnswers.Any())
-                            {
-                                string idAnswerLabel = string.Empty;
-                                int countLabel = 1;
-                                foreach (var item in Model.ListAnswers)
-                                {
-                                    idAnswerLabel = string.Format("{0}{1}", "lblAnswer", countLabel);
-                                    countLabel++;
-                                    <li id="@idAnswerLabel" class="lblAnswerClass" data-id="@(item.IdAnswer)">
-                                        <a href="javascript:void(0)">
-                                            <span>
-                                                @item.LetterAnswer
-                                            </span>
-                                            @item.TexAnswer
-                                        </a>
-                                    </li>
-                                }
-                            } -->
                         </ul>
-                        <!-- <div id="loadingRequestAnswer" class="advice"><span>@ViewContext.HttpContext.GetGlobalResourceObject("App_GlobalResourcesGameFinancialStrategy", "LabelJuegoProcessAnswers").ToString()</span></div> -->
                         <div id="loadingRequestAnswer" class="advice"></div>
                     </div>
                     <div class="stars-footer">
-                    <!--    @for (int i = 0; i < sizeAnswersCorrect; i++)
-                        {
-                            <span>
-                                <img src="~/Content/images/game1/star-02.svg">
-                            </span>
-                        }
-                        @for (int i = 0; i < sizeAnswerIncorrect; i++)
-                        {
-                            <span>
-                                <img src="~/Content/images/game1/star-01.svg">
-                            </span>
-                        }
-                        <span class="level">@string.Format("{0} {1}", @ViewContext.HttpContext.GetGlobalResourceObject("App_GlobalResourcesGameFinancialStrategy", "LabelJuegoNivel").ToString(), sizeAnswersCorrect)</span>
-                        -->
                     </div> 
                 </div>
             </div>
@@ -154,10 +121,10 @@
                 onlyOne: true
             });
             $("#loadingRequestAnswer").hide();
-            $('#stage04').animate({
-                left: "-=100%",
-                opacity: "1"
-            }, 800);
+            // $('#stage04').animate({
+            //     left: "-=100%",
+            //     opacity: "1"
+            // }, 800);
             $("#btnHelpQuestion").click(function ()
             {
     
