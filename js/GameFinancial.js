@@ -26,6 +26,7 @@ let htmlStar = new Array();
 let starsFooter = document.getElementsByClassName("stars-footer")[0];
 var indices = [];
 let i = 0;
+let randQuestions;
 
 const quiz = [{
     question: "Indique que aspecto(s) se debe tener en cuenta antes de realizar una inversión:",
@@ -224,8 +225,9 @@ function temporizador() {
             timer = setTimeout("temporizador()", 1000);
 
             if(timerValue == 0){
-
+              quiz.splice(randQuestions, 1);
               timerValue = 31;
+              
               Next();
               
             }
@@ -239,51 +241,68 @@ RenderStars();
 
 function Next() {
   // location.reload();
+  if(quiz.length == 0) {
+    console.log("Puntaje " + score)
+    $('#stage04').animate({
+      left: "-=100%",
+      opacity: "1"
+    }, 800);
+    $('#stage05').animate({
+      left: "-=100%",
+      opacity: "1"
+    }, 800);
+    document.querySelector(".score span").innerHTML = score;
+  }
+  else {
+    let randNoRepeat = [];
+    randQuestions = parseInt(Math.floor(Math.random() * quiz.length));
+    console.log(randQuestions);
+    // CurrentQuestion++;
+    // starsFooter();
+    // console.log(CurrentQuestion);
+
+
+    dataAnswers = quiz[randQuestions].answers;
+    console.log(dataAnswers)
+    selectedAnswer = false;
+    $('#stage04').attr('style','left: 100%; opacity: 0');
+    $('#stage04').animate({
+      left: "-=100%",
+      opacity: "1"
+    }, 800);
+    // timerValue = 30;
+    respuestas.innerHTML = `${dataAnswers.map(templateAnswers).join("")}`;
+    // let cloneBox = questionBox.cloneNode(true);
+    // console.log(cloneBox);
+    // stage.append(cloneBox);
+
+    dataQuestion = quiz[randQuestions].question;
+    lblHeaderQuestion.innerHTML = dataQuestion;
+
+    randNoRepeat.push(quiz[randQuestions])
+    console.log(randNoRepeat);
+    // quiz.splice(randQuestions, 1);
+
+    console.log(randQuestions)
+    indexAnswer(randQuestions);
+    
+    // let ranAns = [];
+
+    // let countAnswers = dataAnswers.length;
+
+    // for(let n = 0; n < countAnswers; n++) {
+    //   let randIndex = parseInt(Math.floor(Math.random() * dataAnswers.length));
+    //   ranAns.push(dataAnswers[randIndex]);
+    //   // dataAnswers.splice(randIndex, 1);
+    //   console.log(ranAns);
+    // }
+
+    // respuestas.innerHTML = `${ranAns.map(templateAnswers).join("")}`;
+  }
   
-  CurrentQuestion++;
-  // starsFooter();
-  // console.log(CurrentQuestion);
-  dataAnswers = quiz[CurrentQuestion].answers;
   
-  selectedAnswer = false;
-  $('#stage04').attr('style','left: 100%; opacity: 0');
-  $('#stage04').animate({
-    left: "-=100%",
-    opacity: "1"
-  }, 800);
-  // timerValue = 30;
-  respuestas.innerHTML = `${dataAnswers.map(templateAnswers).join("")}`;
-  // let cloneBox = questionBox.cloneNode(true);
-  // console.log(cloneBox);
-  // stage.append(cloneBox);
-
-  dataQuestion = quiz[CurrentQuestion].question;
-  lblHeaderQuestion.innerHTML = dataQuestion;
-
-  indexAnswer(CurrentQuestion);
-
-  // if (timerValue == 0) {
-  //   // NextQuestion();
-  //    Next()
-
-  //    timer = setTimeout('temporizador()', 1000);
-  //    if (timerValue != 0 && !selectedAnswer) {
-  //     timerValue--;
-  //     if (timerValue > 9) {
-  //       $("#lblTimer").text(timerValue);
-  //     }
-  //     else {
-  //         $("#lblTimer").text("0" + timerValue);
-  //     }
-  //     timer = setTimeout("temporizador()", 1000);
-  //    }
-  // }
+  
 }
-
-// function stopTimer() {
-//   clearTimeout(timer);
-//   timerOn = 0;
-// }
 
 let timerAnswer = 5; 
 function indexAnswer(indexFull) {
@@ -291,16 +310,19 @@ function indexAnswer(indexFull) {
     // AnswerClass.forEach(element => {
     // element.addEventListener("click", function( event ) {
     // //  let valueAns = quiz[idAnswerLabel].answers.answer;
-    //   console.log("clic");
+  
   let selectAns;
     $( ".lblAnswerClass" ).each(function(index) {
       $(this).on("click", function(e) {
-        // stopTimer()
+        console.log("la pregunta es: "+ indexFull + "y la respuesta es"+ index);
+        console.log(quiz[indexFull].answers[index].answer );
+        $("#loadingRequestAnswer").show();
         $(this).addClass('select');
         selectedAnswer = true;
         selectAns = this;
         setTimeout(function () {
           if(quiz[indexFull].answers[index].answer === 1) {
+            
             console.log(this)
             
             $(selectAns).addClass('correct');
@@ -310,10 +332,13 @@ function indexAnswer(indexFull) {
               timerValue = 31;
               // location.reload();
               Next();
+              $("#loadingRequestAnswer").hide();
+              // quiz.splice(randQuestions, 1);
               temporizador();
             }, 2500)
-
+            quiz.splice(randQuestions, 1);
           }
+          
           else {
             console.log(this)
             $(selectAns).addClass('wrong');
@@ -322,11 +347,12 @@ function indexAnswer(indexFull) {
               timerValue = 31;
               // location.reload();
               Next();
+              $("#loadingRequestAnswer").hide();
+              // quiz.splice(randQuestions, 1);
               temporizador();
             }, 2500)
+            quiz.splice(randQuestions, 1);
           }
-
-          
         }, 2500)
       });
     });
