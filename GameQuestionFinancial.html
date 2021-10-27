@@ -7,10 +7,12 @@
     <title>Game Question</title>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/game1.css">
+    <link rel="stylesheet" href="css/game2.css">
     <link rel="stylesheet" href="css/plugin.css">
     <!-- <link rel="stylesheet" href="css/game2.css"> -->
     <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="css/normalize.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css">
 </head>
 <body>
     <div class="game-wrap">
@@ -29,21 +31,17 @@
                                 </a>
                             </div>
                             <span id="spanImageHelpPortal" class="box-tool">
-                                <img id="imgHelpPortal" alt="Help Portal" src="~/Content/images/game1/arrow02.svg" title="">
+                                <img id="imgHelpPortal" alt="Help Portal" src="images/arrow02.svg" title="">
                                 <div id="divHelpPortal" class="disable-tool"></div>
                             </span>
                             <span id="spanImageFiftenHelp" class="box-tool">
-                                <img id="btnHelpQuestion" data-id="@(Model.IdQuestion)" src="~/Content/images/game1/50-50-02.svg" title="">
+                                <img id="btnHelpQuestion" data-id="@(Model.IdQuestion)" src="images/50-50-02.svg" title="">
                                 <div id="divHelpQuestion" class="disable-tool"></div>
                             </span>
                             <span id="spanImageHelpTwitter" class="box-tool">
-                                <img id="imgHelpTwitter" alt="Help Twitter" src="~/Content/images/game1/number-02.svg" title="" >
+                                <img id="imgHelpTwitter" alt="Help Twitter" src="images/number-02.svg" title="" >
                                 <div id="divHelpTwitter" class="disable-tool"></div>
                             </span>
-                            @*<span id="spanImageHelpCall" class="box-tool">
-                                <img id="imgHelpCall" alt="Help Call" src="~/Content/images/game1/phone-02.svg" title="Bogotá 417 3535 o a nivel nacional al 01 900 331 3777" class="tooltip">
-                                <div id="divHelpCall" class="disable-tool"></div>
-                            </span>*@
                         </div>
                     </div>
                     <div class="question-box">
@@ -77,7 +75,7 @@
                                     </a>
                                 </div>
                                 <div class="try-again">
-                                    <a href="" id="retryBtn">
+                                    <a href="index.html" id="retryBtn">
                                         <img src="images/try.svg">
                                         <span>Volver a jugar</span>
                                     </a>
@@ -159,13 +157,13 @@
             //     left: "-=100%",
             //     opacity: "1"
             // }, 800);
-            $("#btnHelpQuestion").click(function ()
-            {
+            // $("#btnHelpQuestion").click(function ()
+            // {
     
-                var getIdQuestion = $(this).data("id");
-                GetHelpFiftyPercent(getIdQuestion);
+            //     var getIdQuestion = $(this).data("id");
+            //     GetHelpFiftyPercent(getIdQuestion);
     
-            });
+            // });
     
             // $("#imgHelpPortal").click(function ()
             // {

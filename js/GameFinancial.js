@@ -151,17 +151,48 @@ const quiz = [{
 ];
 
 
-
+let countLetter = 0;
 function templateAnswers(answer) {
+    
     return `
-        <li id="idAnswerLabel" class="lblAnswerClass">
+        <li id="idAnswerLabel" data-id="${answer.answer}" class="lblAnswerClass">
             <a href="javascript:void(0)">
-                <span id="letterAns">${answer.letter}</span>
-                <span id="TextAns">${answer.option}</span>
+                <span id="letterAns">${renderLetters(countLetter)}</span>
+                ${answer.option}
             </a>
         </li>
+        
     `
 }
+
+function renderLetters(letter) {
+  countLetter++
+  console.log("letra" + letter)
+  switch (letter) {
+    case 0:
+      return `
+        A
+      `;
+      break;
+    case 1:
+      return `
+        B
+      `;
+    break;
+    case 2:
+      return `
+        C
+      `;
+    break;
+    case 3:
+      return `
+        D
+        <span id="noCount">${countLetter = 0}</span>
+      `;
+    break;
+    }
+  }
+
 
 function templateQuestion(question) {
     return `
@@ -252,6 +283,7 @@ function Next() {
       opacity: "1"
     }, 800);
     document.querySelector(".score span").innerHTML = score;
+    timerValue = 0;
   }
   else {
     let randNoRepeat = [];
@@ -271,7 +303,7 @@ function Next() {
       opacity: "1"
     }, 800);
     // timerValue = 30;
-    respuestas.innerHTML = `${dataAnswers.map(templateAnswers).join("")}`;
+    // respuestas.innerHTML = `${dataAnswers.map(templateAnswers).join("")}`;
     // let cloneBox = questionBox.cloneNode(true);
     // console.log(cloneBox);
     // stage.append(cloneBox);
@@ -284,25 +316,61 @@ function Next() {
     // quiz.splice(randQuestions, 1);
 
     console.log(randQuestions)
+
+    let ranAns = [];
+
+    let countAnswers = dataAnswers.length;
+    let count = 0;
+
+    while(ranAns.length < countAnswers) {
+      // console.log("ite"+n);
+      let randIndex = parseInt(Math.floor(Math.random() * countAnswers));
+      console.log(randIndex)
+      console.log("dataanswers: " + dataAnswers[randIndex].letter);
+      let existe = false;
+      console.log(ranAns.length)
+      for(var i=0; i < ranAns.length; i++){
+        if(ranAns[i].letter == dataAnswers[randIndex].letter){
+          console.log("ranAns letra: " + ranAns[i]);
+          console.log("ranAns "+JSON.stringify(ranAns[i])+"dataAnswers"+JSON.stringify(dataAnswers[randIndex]))
+          console.log("ranAns "+JSON.stringify(ranAns[i])+"dataAnswers"+JSON.stringify(dataAnswers[randIndex]))
+          existe = true;
+          break;
+        }
+       
+      }
+      if(!existe) {
+        console.log("dataAnswers[randIndex]" + JSON.stringify(dataAnswers[randIndex]))
+        ranAns[ranAns.length] = dataAnswers[randIndex]
+        console.log(ranAns.length)
+      }
+      count += 1;
+      console.log("while" + count);
+      
+      // console.log("indice dataAnswers"+dataAnswers.indexOf(dataAnswers[randIndex]));
+      // console.log("indice ranAns"+dataAnswers.indexOf(ranAns[randIndex]));
+      // console.log(" dataAnswers: " + JSON.stringify(dataAnswers[randIndex]));
+      // console.log(" ranAns " + JSON.stringify(ranAns[randIndex]));
+      // // dataAnswers.splice(randIndex, 1);
+      // console.log(ranAns);
+    }
+    console.log("ranAns Final" + JSON.stringify(ranAns))
+
+    respuestas.innerHTML = `${ranAns.map(templateAnswers).join("")}`;
+    console.log("randQuestions" + randQuestions)
     indexAnswer(randQuestions);
     
-    // let ranAns = [];
-
-    // let countAnswers = dataAnswers.length;
-
-    // for(let n = 0; n < countAnswers; n++) {
-    //   let randIndex = parseInt(Math.floor(Math.random() * dataAnswers.length));
-    //   ranAns.push(dataAnswers[randIndex]);
-    //   // dataAnswers.splice(randIndex, 1);
-    //   console.log(ranAns);
-    // }
-
-    // respuestas.innerHTML = `${ranAns.map(templateAnswers).join("")}`;
+    
   }
   
-  
-  
 }
+
+$("#btnHelpQuestion").click(function () {
+
+    // var getIdQuestion = $(this).data("id");
+    GetHelpFiftyPercent(randQuestions);
+
+});
 
 let timerAnswer = 5; 
 function indexAnswer(indexFull) {
@@ -313,15 +381,19 @@ function indexAnswer(indexFull) {
   
   let selectAns;
     $( ".lblAnswerClass" ).each(function(index) {
+      
       $(this).on("click", function(e) {
-        console.log("la pregunta es: "+ indexFull + "y la respuesta es"+ index);
-        console.log(quiz[indexFull].answers[index].answer );
+        let idata = $(this).data("id");
+        console.log("id respuesta de pregunta: " + parseInt(idata))
+        console.log("click a each: " + index)
+        console.log("la pregunta es: "+ quiz[indexFull].question + "y la respuesta es"+ JSON.stringify(quiz[indexFull].answers[index]));
+        console.log("La respuesta: " + quiz[indexFull].answers[index].answer );
         $("#loadingRequestAnswer").show();
         $(this).addClass('select');
         selectedAnswer = true;
         selectAns = this;
         setTimeout(function () {
-          if(quiz[indexFull].answers[index].answer === 1) {
+          if(parseInt(idata) === 1) {
             
             console.log(this)
             
@@ -415,41 +487,23 @@ function fillStar() {
   console.log(htmlStar.length);
 }
 
-// function addStars() {
+function GetHelpFiftyPercent(idQuestion) {
+  // $(".lblAnswerClass").hide();
+
+    // console.log("idQuestion" + JSON.stringify(ranAns[idQuestion]))
+
     
+    // var getIdAnswerResponse = obj.IDRespuesta;
+    //alert(getIdAnswerResponse);
+    $(".lblAnswerClass").each(function() {
+      console.log("ides " + $(this).data("id"));
+    //     // var getIdAnswer = $(this).attr("data-id");
+    //     // var idLabelAnswer = $(this).attr("id");
+    //     // if (getIdAnswer == getIdAnswerResponse) {
+    //     //     $("#" + idLabelAnswer).show();
+    //     // }
 
-//     var element = "<span><img src='images/star-01.svg'></span>";
-
-//     var idx = htmlStar.indexOf(element);
-    
-//     while (idx != -1) {
-//       console.log(" el indice es" + idx);
-//       console.log("hola")
-//       indices.push(idx);
-//       idx = htmlStar.indexOf(element, idx + 1);
-//     }
-//     console.log("los indices son" + indices[0])
-//     let posicion = indices[0];
-
-//     htmlStar[posicion] = '<span><img src="images/star-02.svg"></span>';
-//     starsFooter.innerHTML = htmlStar.join('');
-//     console.log(htmlStar);
-
-
-//     // console.log(n)
-//     //   if(htmlStar.indexOf(n) === $('.answer > .emptyStar').hasClass("emptyStar")) {
-//     //     htmlStar[n] = "<img class='FillStar' src='images/star-02.svg'>"
-//     //   }
-//   // $('.stars-footer > span').each(function(e) {
-//   //   if(htmlStar[e] === $(this).hasClass("0")) {
-//   //     console.log(htmlStar[e])
-//   //   }
-//   //   // if() {
-//   //   //   // console.log()
-      
-//   //   //   // $(this).replaceWith("<img class='emptyStar' src='images/star-02.svg'>");
-//   //   //   // $(starsFooter).removeClass("0").addClass("1");
-
-//   //   // }
-//   // })
-// }
+    //     parseInt(Math.floor(Math.random() * quiz.length));
+    //     if($(this).d)
+    });
+  }
