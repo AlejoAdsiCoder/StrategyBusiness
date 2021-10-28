@@ -632,14 +632,6 @@ function templateQuestion(question) {
     `
 } 
 
-// function templateStars() {
-//   return `
-//     <span>
-//       <img src="images/star-01.svg">
-//     </span>
-//   `
-// }
-
 let CurrentQuestion = -1;
 let dataAnswers;
 let dataQuestion;
@@ -655,23 +647,7 @@ temporizador();
 
 let answerT = 0;
 let question = 0;
-// while (question <= sizeQuestiontotal){
-//   question++; 
 
-//   if (question = 0){
-//     Next();
-//   }
-//   // console.log(question);
-
-// }
-// function startCount() {
-//   if (!timerOn) {
-//     timerOn = 1;
-//     temporizador();
-//   }
-// }
-
-// timer = setTimeout('temporizador()', 1000);
 function temporizador() {
   
     $(document).ready(function () {
@@ -720,12 +696,6 @@ function Next() {
   else {
     let randNoRepeat = [];
     randQuestions = parseInt(Math.floor(Math.random() * quiz.length));
-    console.log(randQuestions);
-    // CurrentQuestion++;
-    // starsFooter();
-    // console.log(CurrentQuestion);
-
-
     dataAnswers = quiz[randQuestions].answers;
     console.log(dataAnswers)
     selectedAnswer = false;
@@ -734,11 +704,6 @@ function Next() {
       left: "-=100%",
       opacity: "1"
     }, 800);
-    // timerValue = 30;
-    // respuestas.innerHTML = `${dataAnswers.map(templateAnswers).join("")}`;
-    // let cloneBox = questionBox.cloneNode(true);
-    // console.log(cloneBox);
-    // stage.append(cloneBox);
 
     dataQuestion = quiz[randQuestions].question;
     lblHeaderQuestion.innerHTML = dataQuestion;
@@ -757,15 +722,15 @@ function Next() {
     while(ranAns.length < countAnswers) {
       // console.log("ite"+n);
       let randIndex = parseInt(Math.floor(Math.random() * countAnswers));
-      console.log(randIndex)
-      console.log("dataanswers: " + dataAnswers[randIndex].letter);
+      // console.log(randIndex)
+      // console.log("dataanswers: " + dataAnswers[randIndex].letter);
       let existe = false;
       console.log(ranAns.length)
       for(var i=0; i < ranAns.length; i++){
         if(ranAns[i].letter == dataAnswers[randIndex].letter){
-          console.log("ranAns letra: " + ranAns[i]);
-          console.log("ranAns "+JSON.stringify(ranAns[i])+"dataAnswers"+JSON.stringify(dataAnswers[randIndex]))
-          console.log("ranAns "+JSON.stringify(ranAns[i])+"dataAnswers"+JSON.stringify(dataAnswers[randIndex]))
+          // console.log("ranAns letra: " + ranAns[i]);
+          // console.log("ranAns "+JSON.stringify(ranAns[i])+"dataAnswers"+JSON.stringify(dataAnswers[randIndex]))
+          // console.log("ranAns "+JSON.stringify(ranAns[i])+"dataAnswers"+JSON.stringify(dataAnswers[randIndex]))
           existe = true;
           break;
         }
@@ -777,7 +742,6 @@ function Next() {
         console.log(ranAns.length)
       }
       count += 1;
-      console.log("while" + count);
       
       // console.log("indice dataAnswers"+dataAnswers.indexOf(dataAnswers[randIndex]));
       // console.log("indice ranAns"+dataAnswers.indexOf(ranAns[randIndex]));
@@ -786,10 +750,10 @@ function Next() {
       // // dataAnswers.splice(randIndex, 1);
       // console.log(ranAns);
     }
-    console.log("ranAns Final" + JSON.stringify(ranAns))
+    // console.log("ranAns Final" + JSON.stringify(ranAns))
 
     respuestas.innerHTML = `${ranAns.map(templateAnswers).join("")}`;
-    console.log("randQuestions" + randQuestions)
+    // console.log("randQuestions" + randQuestions)
     indexAnswer();
     
     
@@ -904,54 +868,19 @@ function fillStar() {
 
   $(starsFooter).append("<span class='level'>NIVEL "+i+"</span>");
   
-  /* switch(htmlStar[posicion]) {
-    case '0':
-      htmlStar[posicion] = '1';
-      
-      console.log(htmlStar);
-      i++;
-      starsFooter.innerHTML = htmlStar.join('');
-      htmlStar[posicion + 1];
-      break;
-     case '1':
-       i++;
-      console.log(htmlStar);
-      break;
-  }
-   */
-  console.log(i);
-  console.log(htmlStar.length);
 }
 
 function GetHelpFiftyPercent(idQuestion) {
-  // $(".lblAnswerClass").hide();
-
-    // console.log("idQuestion" + JSON.stringify(ranAns[idQuestion]))
-    let count = 0;
-    
-    // var getIdAnswerResponse = obj.IDRespuesta;
-    //alert(getIdAnswerResponse);
-    // parseInt(Math.floor(Math.random() * quiz.length));
-    $(".lblAnswerClass").each(function() {
-      let answers = $(this).data("id");
-        if(answers == 0) {
-          while(count <= 1) {
-            $(this).hide();
-            count++;
-            break;
-          }
+  let count = 0;
+  
+  $(".lblAnswerClass").each(function() {
+    let answers = $(this).data("id");
+      if(answers == 0) {
+        while(count <= 1) {
+          $(this).hide();
+          count++;
+          break;
         }
-        // else {
-        //   $(this).show();
-        // }
-      
-    //     // var getIdAnswer = $(this).attr("data-id");
-    //     // var idLabelAnswer = $(this).attr("id");
-    //     // if (getIdAnswer == getIdAnswerResponse) {
-    //     //     $("#" + idLabelAnswer).show();
-    //     // }
-
-    //     parseInt(Math.floor(Math.random() * quiz.length));
-    //     if($(this).d)
-    });
-  }
+      }
+  });
+}
