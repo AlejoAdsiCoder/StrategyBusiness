@@ -10,6 +10,22 @@
     font-style: normal;
 }
 
+body.game {
+    font-family: "Lato", sans-serif;
+    color: #5B5B5B;
+}
+
+.game ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+.game a {
+    text-decoration: none;
+    color: #5B5B5B;
+}
+
 .game-wrap .container {
     padding: 60px 0;
 }
@@ -3836,7 +3852,8 @@ ul.list-comodines {
 
 @media (max-width: 568px) {
     .stars-footer {
-        bottom: -366px;
+        /* bottom: -366px; */
+        bottom: 0;
     }
 }
 
@@ -3894,13 +3911,15 @@ ul.list-comodines {
     font-size: 110px;
     color: #fff;
     background: url(../images/timer.svg) no-repeat;
-    padding: 40px 50px 50px 50px;
+    /* padding: 40px 50px 50px 50px; */
+    padding: 40px 40px 40px 40px;
     display: inline-block;
 }
 
     .timer span {
         position: relative;
-        right: 10px;
+        /* right: 10px; */
+        top: -12px;
     }
 
 @media (max-width: 991px) {
@@ -4293,6 +4312,7 @@ ul.list-comodines {
     letter-spacing: 6px;
     font-weight: lighter;
     margin-bottom: 0;
+    margin-top: 0;
 }
 
 @media (max-width: 768px) {
@@ -4313,7 +4333,8 @@ ul.list-comodines {
 
 .circle-score .score {
     font-size: 25px;
-    margin-bottom: 170px;
+    /* margin-bottom: 170px; */
+    margin-bottom: 142px;
 }
 
 @media (max-width: 768px) {
@@ -4377,7 +4398,8 @@ ul.list-comodines {
     display: inline-block;
     border-radius: 50%;
     padding: 66px 150px;
-    margin-top: 39px;
+    /* margin-top: 39px; */
+    margin-top: 16px;
     box-shadow: 0px 6px 0px 0px rgba(56, 63, 12, 0.3);
 }
 
