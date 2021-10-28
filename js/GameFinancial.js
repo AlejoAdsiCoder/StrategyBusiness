@@ -603,22 +603,22 @@ function renderLetters(letter) {
   switch (letter) {
     case 0:
       return `
-        A
+        A.
       `;
       break;
     case 1:
       return `
-        B
+        B.
       `;
     break;
     case 2:
       return `
-        C
+        C.
       `;
     break;
     case 3:
       return `
-        D
+        D.
         <span id="noCount">${countLetter = 0}</span>
       `;
     break;
@@ -790,7 +790,7 @@ function Next() {
 
     respuestas.innerHTML = `${ranAns.map(templateAnswers).join("")}`;
     console.log("randQuestions" + randQuestions)
-    indexAnswer(randQuestions);
+    indexAnswer();
     
     
   }
@@ -805,21 +805,21 @@ $("#btnHelpQuestion").click(function () {
 });
 
 let timerAnswer = 5; 
-function indexAnswer(indexFull) {
+function indexAnswer() {
     // let AnswerClass = document.querySelector(".lblAnswerClass");
     // AnswerClass.forEach(element => {
     // element.addEventListener("click", function( event ) {
     // //  let valueAns = quiz[idAnswerLabel].answers.answer;
   
   let selectAns;
-    $( ".lblAnswerClass" ).each(function(index) {
+    $( ".lblAnswerClass" ).each(function() {
       
       $(this).on("click", function(e) {
         let idata = $(this).data("id");
-        console.log("id respuesta de pregunta: " + parseInt(idata))
-        console.log("click a each: " + index)
-        console.log("la pregunta es: "+ quiz[indexFull].question + "y la respuesta es"+ JSON.stringify(quiz[indexFull].answers[index]));
-        console.log("La respuesta: " + quiz[indexFull].answers[index].answer );
+        // console.log("id respuesta de pregunta: " + parseInt(idata))
+        // console.log("click a each: " + index)
+        // console.log("la pregunta es: "+ quiz[indexFull].question + "y la respuesta es"+ JSON.stringify(quiz[indexFull].answers[index]));
+        // console.log("La respuesta: " + quiz[indexFull].answers[index].answer );
         $("#loadingRequestAnswer").show();
         $(this).addClass('select');
         selectedAnswer = true;
@@ -866,7 +866,7 @@ function indexAnswer(indexFull) {
 function userAnswer(Ans) {
   if(Ans === 1) {
 
-    score = score + 1;
+    score = score + 40;
     fillStar();
   }
   else {
@@ -879,6 +879,7 @@ function RenderStars() {
     htmlStar.push("<span><img src='images/star-01.svg'></span>")
     starsFooter.innerHTML = htmlStar.join('');
   }
+  $(starsFooter).append("<span class='level'>NIVEL <span class='num'>0</span><span>");
 }
 
 function fillStar() {
@@ -898,7 +899,10 @@ function fillStar() {
     console.log(htmlStar);
     i++;
     starsFooter.innerHTML = htmlStar.join('');
+    
   }
+
+  $(starsFooter).append("<span class='level'>NIVEL "+i+"</span>");
   
   /* switch(htmlStar[posicion]) {
     case '0':

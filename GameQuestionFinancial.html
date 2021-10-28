@@ -46,8 +46,7 @@
                     </div>
                     <div class="question-box">
                         <div class="question"><span id="lblHeaderQuestion"></span></div>
-                        <ul class="answers">
-                        </ul>
+                        <ul class="answers"></ul>   
                         <div id="loadingRequestAnswer" class="advice"><span>Estamos procesando tu respuesta</span></div>
                     </div>
                     <!-- <div class="stars-footer">
@@ -157,44 +156,48 @@
             //     left: "-=100%",
             //     opacity: "1"
             // }, 800);
-            // $("#btnHelpQuestion").click(function ()
-            // {
     
-            //     var getIdQuestion = $(this).data("id");
-            //     GetHelpFiftyPercent(getIdQuestion);
+            $("#imgHelpPortal").click(function ()
+            {
+                console.log("Portal")
+                window.open('https://web.icetex.gov.co/', '_blank');
+                // $("#imgHelpPortal").attr('disabled', true);
+                // $("#imgHelpPortal").unbind('click');
+                // $("#imgHelpPortal").attr('disabled', 'disabled');
+                $('#divHelpPortal').addClass('disable-tool active');
+                // var isCheckedHelpPortal = '@(IsCheckedHelpPortal)'
+                // if (isCheckedHelpPortal == 'False')
+                // {
+                //     $('#divHelpPortal').addClass('disable-tool active');
+                //     GetHelpQuestion(typeHelp.PORTAL.valueOf());
+                // }
+            });
     
-            // });
+            $("#imgHelpTwitter").click(function ()
+            {
+                console.log("Twitter")
+                window.open('https://twitter.com/ICETEX', '_blank');
+                // $("#imgHelpTwitter").attr('disabled', true);
+                // $("#imgHelpTwitter").unbind('click');
+                // $("#imgHelpTwitter").attr('disabled', 'disabled');
+                $('#divHelpTwitter').addClass('disable-tool active');
+                // var isCheckedHelpTwitter = '@(IsCheckedHelpTwitter)'
+                // if (isCheckedHelpTwitter == 'False')
+                // {
+                //     $('#divHelpTwitter').addClass('disable-tool active');
+                //     GetHelpQuestion(typeHelp.TWITTER.valueOf());
+                // }
     
-            // $("#imgHelpPortal").click(function ()
-            // {
-    
-            //     var isCheckedHelpPortal = '@(IsCheckedHelpPortal)'
-            //     if (isCheckedHelpPortal == 'False')
-            //     {
-            //         $('#divHelpPortal').addClass('disable-tool active');
-            //         GetHelpQuestion(typeHelp.PORTAL.valueOf());
-            //     }
-            // });
-    
-            // $("#imgHelpTwitter").click(function ()
-            // {
-    
-            //     var isCheckedHelpTwitter = '@(IsCheckedHelpTwitter)'
-            //     if (isCheckedHelpTwitter == 'False')
-            //     {
-            //         $('#divHelpTwitter').addClass('disable-tool active');
-            //         GetHelpQuestion(typeHelp.TWITTER.valueOf());
-            //     }
-    
-            // });
+            });
     
             // $("#imgHelpCall").click(function ()
             // {
-            //     $('#divHelpCall').addClass('disable-tool active');
-            //     var isCheckedHelpCall = '@(IsCheckedHelpCall)'
-            //     if (isCheckedHelpCall == 'False') {
-            //         GetHelpQuestion(typeHelp.CALL.valueOf());
-            //     }
+                
+            //     // $('#divHelpCall').addClass('disable-tool active');
+            //     // var isCheckedHelpCall = '@(IsCheckedHelpCall)'
+            //     // if (isCheckedHelpCall == 'False') {
+            //     //     GetHelpQuestion(typeHelp.CALL.valueOf());
+            //     // }
     
             // });
     
@@ -216,208 +219,6 @@
     
             // });
         });
-
-        // function listQuestion() {
-
-            
-        //     $.ajax({
-        //         url: "js/data.json",
-        //         dataType: "json",
-        //         method: "POST",
-        //         success: function (data) {
-        //             alert(data);
-        //             // var datos = JSON.parse(data);
-        //             let html = '';
-        //             let title = '<div class="question"><span id="lblHeaderQuestion">'+data[i].question+'</span></div>';
-
-        //             $.each(data, function(i)  {
-        //                 html += '<li id="idAnswerLabel" class="lblAnswerClass"">'+
-        //                     '<a href="javascript:void(0)">'+
-        //                             '<span id="letterAns">'+data[i].answers.letter+'</span>'+
-        //                             '<span id="TextAns">'+data[i].answers.option+'</span>'+
-        //                     '</a>'+
-        //                 '</li>'
-        //             });
-        //             $(".question-box").append(title);
-        //             $(".question-box").append(html);
-        //         }
-        //     })
-        // }
-
-        // timer = setTimeout('temporizador()', 1000);
-        // function temporizador() {
-        //     $(document).ready(function () {
-        //         if (timerValue != 0 && !selectedAnswer) {
-        //             timerValue--;
-        //             if (timerValue > 9) {
-        //                 $("#lblTimer").text(timerValue);
-        //             }
-        //             else {
-        //                 $("#lblTimer").text("0" + timerValue);
-        //             }
-        //             timer = setTimeout("temporizador()", 1000);
-        //         }
-        //         else {
-        //             if (timerValue == 0) {
-        //                 NextQuestion();
-        //                 let question;
-        //                 CurrentQuiz(question+1)
-        //             }
-        //         }
-        //     });
-        // }
-        // function validateAnswer(idAnswer, idElement)
-        // {
-        //     $.ajax({
-        //         url: "@Url.Action("GetValidateQuestionAnswer", "QuestionFinancialLiteracy")",
-        //         data: { idAnswerValue: idAnswer },
-        //         dataType: "json",
-        //         type: "POST",
-        //         error: function (data)
-        //         {
-        //             console.log("error");
-        //             console.log(data);
-        //             alert("Error peticion");
-        //         },
-        //         success: function (data)
-        //         {
-        //             console.log(data);
-        //             if (data == "True") {
-        //                 $('#' + idElement).addClass('correct');
-        //             }
-        //             else {
-        //                 $('#' + idElement).addClass('wrong');
-        //             }
-        //             setTimeout(function () {
-        //                 NextQuestion();
-    
-        //             }, 2500)
-        //         }
-        //     });
-        // }
-        // function GetHelpFiftyPercent(idQuestion) {
-        //     var isChecked = '@(IsCheckedHelpFiftyPercent)'
-        //     console.log(isChecked);
-        //     if (isChecked == 'False')
-        //     {
-        //         $('#divHelpQuestion').addClass('disable-tool active');
-        //         selectedAnswer = true;
-        //         $.ajax({
-        //             url: "@Url.Action("GetHelpFiftyPercent", "QuestionFinancialLiteracy")",
-        //             data: { idQuestionValue: idQuestion },
-        //             dataType: "json",
-        //             type: "POST",
-        //             error: function () {
-        //                 alert("Error peticion");
-        //             },
-        //             success: function (data)
-        //             {
-        //                 //alert(data);
-        //                 isChecked = 'True';
-        //                 console.log(data);
-        //                 $(".lblAnswerClass").hide();
-        //                 $.each(JSON.parse(data), function (idx, obj)
-        //                 {
-        //                     var getIdAnswerResponse = obj.IDRespuesta;
-        //                     //alert(getIdAnswerResponse);
-        //                     $(".lblAnswerClass").each(function () {
-        //                         var getIdAnswer = $(this).attr("data-id");
-        //                         var idLabelAnswer = $(this).attr("id");
-        //                         if (getIdAnswer == getIdAnswerResponse) {
-        //                             $("#" + idLabelAnswer).show();
-        //                         }
-        //                     });
-        //                     //alert(obj.IDRespuesta);
-        //                 });
-    
-        //                 //for (var i = 0; i < data.length; i++)
-        //                 //{
-        //                 //    var getIdAnswerResponse = data[i];
-        //                 //    //alert(getIdAnswerResponse);
-        //                 //    $(".lblAnswerClass").each(function () {
-        //                 //        var getIdAnswer = $(this).attr("data-id");
-        //                 //        var idLabelAnswer = $(this).attr("id");
-        //                 //        if (getIdAnswer == getIdAnswerResponse) {
-        //                 //            $("#" + idLabelAnswer).show();
-        //                 //        }
-        //                 //    });
-        //                 //}
-        //                 selectedAnswer = false;
-        //                 //temporizador();
-        //                 $("#btnHelpQuestion").attr('disabled', 'disabled');
-        //             }
-        //         });
-        //     }
-        // }
-        // function GetHelpQuestion(typeHelpValue) {
-        //     selectedAnswer = true;
-        //     $.ajax({
-        //         url: "@Url.Action("GetHelpQuestion", "QuestionFinancialLiteracy")",
-        //         data: { typeHelp: typeHelpValue },
-        //         dataType: "json",
-        //         type: "POST",
-        //         error: function () {
-        //             alert("Error peticion");
-        //         },
-        //         success: function (data) {
-        //             if (data == "True")
-        //             {
-        //                 selectedAnswer = false;
-        //                 //temporizador();
-        //                 switch (typeHelpValue) {
-        //                     case typeHelp.PORTAL:
-        //                         document.getElementById("lnkHelpPortal").click();
-        //                         $("#imgHelpPortal").attr('disabled', true);
-        //                         $("#imgHelpPortal").unbind('click');
-        //                         $("#imgHelpPortal").attr('disabled', 'disabled');
-        //                         break;
-        //                     case typeHelp.TWITTER:
-        //                         document.getElementById("lnkHelpTwitter").click();
-        //                         $("#imgHelpTwitter").attr('disabled', true);
-        //                         $("#imgHelpTwitter").unbind('click');
-        //                         $("#imgHelpTwitter").attr('disabled', 'disabled');
-        //                         break;
-        //                     case typeHelp.CALL:
-        //                         $("#imgHelpCall").attr('disabled', true);
-        //                         $("#imgHelpCall").unbind('click');
-        //                         $("#imgHelpCall").attr('disabled', 'disabled');
-        //                         break;
-        //                     default:
-        //                         break;
-        //                 }
-        //             }
-        //         }
-        //     });
-        // }
-        // function verifyImageStyleHelp()
-        // {
-        //     var isCheckedHelpPortal = '@(IsCheckedHelpPortal)'
-        //     var isCheckedFiftyPercent = '@(IsCheckedHelpFiftyPercent)'
-        //     var isCheckedHelpTwitter = '@(IsCheckedHelpTwitter)'
-        //     var isCheckedHelpCall = '@(IsCheckedHelpCall)'
-        //     console.log("Test colores");
-        //     console.log(isCheckedFiftyPercent);
-        //     if (isCheckedHelpPortal == 'True')
-        //     {
-        //         $('#divHelpPortal').addClass('disable-tool active');
-        //     }
-        //     if (isCheckedFiftyPercent == 'True')
-        //     {
-        //         $('#divHelpQuestion').addClass('disable-tool active');
-        //     }
-        //     if (isCheckedHelpTwitter == 'True')
-        //     {
-        //         $('#divHelpTwitter').addClass('disable-tool active');
-        //     }
-        //     if (isCheckedHelpCall == 'True')
-        //     {
-        //         $('#divHelpCall').addClass('disable-tool active');
-        //     }
-    
-        // }
-        // function NextQuestion() {
-        //     location.reload();
-        // }
     </script>
 </body>
 </html>
