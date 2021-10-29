@@ -90,60 +90,11 @@
         </div>
     </div>
     <script src="js/jquery-1.8.3.min.js"></script>
-    <script src="js/TweenLite.min.js"></script>
-    <script src="js/CSSPlugin.min.js"></script>
-    <script src="js/royal-slider-min.js"></script>
-    <script src="js/bx-slider.js"></script>
     <script src="js/jquery.tooltipster.min.js"></script>
-    <script src="js/a.js"></script>
-    <!-- <script src="js/main.js"></script> -->
     <script src="js/GameFinancial.js"></script>
     <script type="text/javascript">
 
-        // var timerValue = 30;
-        // var selectedAnswer = false;
-        // var typeHelp = {
-        //     PORTAL: 1,
-        //     TWITTER: 2,
-        //     CALL: 3
-        // };
-        // var requestQuestion = false;
         $(document).ready(function () {
-
-            // fetch("js/data.js")
-            //     .then(json => alert(json));
-
-            // listQuestion();
-
-            // $.ajax({
-            //     url: "./js/data.js",
-            //     dataType: "json",
-            //     type: "POST",
-            //     error: function (data)
-            //     {
-            //     console.log("error");
-            //     console.log(data);
-            //     alert("Error peticion");
-            //     },
-            //     success: function (datos) {
-            //         console.log(datos);
-            //         // var datos = JSON.parse(data);
-            //         let html = '';
-            //         let title = '<div class="question"><span id="lblHeaderQuestion">'+data[i].question+'</span></div>';
-
-            //         var data = JSON.parse(datos);
-            //         $.each(data, function(i)  {
-            //             html += '<li id="idAnswerLabel" class="lblAnswerClass"">'+
-            //                 '<a href="javascript:void(0)">'+
-            //                         '<span id="letterAns">'+data[i].answers.letter+'</span>'+
-            //                         '<span id="TextAns">'+data[i].answers.option+'</span>'+
-            //                 '</a>'+
-            //             '</li>'
-            //         });
-            //         $(".question-box").append(title);
-            //         $(".question-box").append(html);
-            //     }
-            // })
     
             $('.tooltip').tooltipster({
                 trigger: 'click',
@@ -152,72 +103,20 @@
                 onlyOne: true
             });
             $("#loadingRequestAnswer").hide();
-            // $('#stage04').animate({
-            //     left: "-=100%",
-            //     opacity: "1"
-            // }, 800);
     
             $("#imgHelpPortal").click(function ()
             {
                 console.log("Portal")
                 window.open('https://web.icetex.gov.co/', '_blank');
-                // $("#imgHelpPortal").attr('disabled', true);
-                // $("#imgHelpPortal").unbind('click');
-                // $("#imgHelpPortal").attr('disabled', 'disabled');
-                $('#divHelpPortal').addClass('disable-tool active');
-                // var isCheckedHelpPortal = '@(IsCheckedHelpPortal)'
-                // if (isCheckedHelpPortal == 'False')
-                // {
-                //     $('#divHelpPortal').addClass('disable-tool active');
-                //     GetHelpQuestion(typeHelp.PORTAL.valueOf());
-                // }
             });
     
             $("#imgHelpTwitter").click(function ()
             {
                 console.log("Twitter")
                 window.open('https://twitter.com/ICETEX', '_blank');
-                // $("#imgHelpTwitter").attr('disabled', true);
-                // $("#imgHelpTwitter").unbind('click');
-                // $("#imgHelpTwitter").attr('disabled', 'disabled');
-                $('#divHelpTwitter').addClass('disable-tool active');
-                // var isCheckedHelpTwitter = '@(IsCheckedHelpTwitter)'
-                // if (isCheckedHelpTwitter == 'False')
-                // {
-                //     $('#divHelpTwitter').addClass('disable-tool active');
-                //     GetHelpQuestion(typeHelp.TWITTER.valueOf());
-                // }
     
             });
     
-            // $("#imgHelpCall").click(function ()
-            // {
-                
-            //     // $('#divHelpCall').addClass('disable-tool active');
-            //     // var isCheckedHelpCall = '@(IsCheckedHelpCall)'
-            //     // if (isCheckedHelpCall == 'False') {
-            //     //     GetHelpQuestion(typeHelp.CALL.valueOf());
-            //     // }
-    
-            // });
-    
-            // $(".lblAnswerClass").click(function ()
-            // {
-            //     if (!requestQuestion) {
-    
-            //         requestQuestion = true;
-            //         $("#loadingRequestAnswer").show();
-            //         var getIdAnswer = $(this).data("id");
-            //         var getIdElement = $(this).attr('id');
-            //         $('#' + getIdElement).addClass('select');
-            //         selectedAnswer = true;
-            //         setTimeout(function () {
-            //             validateAnswer(getIdAnswer, getIdElement);
-    
-            //         }, 2500)
-            //     }
-    
-            // });
         });
     </script>
 </body>

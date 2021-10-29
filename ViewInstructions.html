@@ -17,8 +17,7 @@
     <div class="container">
         <div class="game-wrapper-financiero">
             <div id="stage02" class="startRight stage">
-                <div>
-                    <span class="instructions">
+                    <div class="instructions">
                         <h4>INSTRUCCIONES</h4>
                         <p class="subtitle">
                             El juego del ICETEX con el que aprenderás acerca de lo importante que es la financiación de un crédito educativo en la consolidación de tus metas de estudio.
@@ -38,35 +37,24 @@
                             </li>
                             <li>
                                 <img src="images/number.svg">
-                                <span class="items">Consultar a la comunidad virtual a través de <span>#yosoyicetex</span> en twitter</span></span>
+                                <span class="items">Consultar a la comunidad virtual a través de <span>#yosoyicetex</span> en twitter</span>
                             </li>
                             <li>
                                 <img src="images/50-50.svg">
                                 <span class="items">50/50, descartar 2 opciones incorrectas</span>
                             </li>
-                            <!-- @*<li>
-                                <img src="images/phone.svg">
-                                <span class="items">@Html.Raw(ViewContext.HttpContext.GetGlobalResourceObject("App_GlobalResourcesGameFinancialStrategy", "LabelInstruccionesComodinCuatro").ToString())</span>
-                            </li>*@ -->
                         </ul>
                         <a href='StarGameQuestion.html' id="nextBtn">
                             <img src="images/next.svg">
                             <p>Siguiente</p>
                         </a>
-                    </span>
-                </div>
+                    </div>
             </div>
         </div>
     </div>
 </div>
 <script src="js/jquery-1.8.3.min.js"></script>
 <script src="js/TweenLite.min.js"></script>
-<script src="js/CSSPlugin.min.js"></script>
-<script src="js/royal-slider-min.js"></script>
-<script src="js/bx-slider.js"></script>
-<script src="js/jquery.tooltipster.min.js"></script>
-<script src="js/animation.js"></script>
-<!-- <script src="js/main.js"></script> -->
 <script type="text/javascript">
     $(document).ready(function () {
         $('#stage02').animate({
@@ -74,5 +62,9 @@
             opacity: "1"
         }, 800)
     });
+    // function cargarDiv(div,url)
+    // {
+    //   $(div).load(url);
+    // }
 </script>
 </body>

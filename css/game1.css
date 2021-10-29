@@ -3668,7 +3668,7 @@ body.game {
     margin: 0;
 }
 
-span.instructions {
+.instructions {
     background: #fff;
     display: inline-block;
     width: 60%;
@@ -3679,7 +3679,7 @@ span.instructions {
 }
 
 @media (max-width: 991px) {
-    span.instructions {
+    .instructions {
         width: 80%;
     }
 }
@@ -3696,11 +3696,11 @@ p.subtitle {
     }
 }
 
-span.instructions ul {
+.instructions ul {
     text-align: left;
 }
 
-    span.instructions ul li {
+    .instructions ul li {
         padding-left: 1em;
         text-indent: -.7em;
         line-height: 28px;
@@ -3708,13 +3708,13 @@ span.instructions ul {
     }
 
 @media (max-width: 568px) {
-    span.instructions ul li {
+    .instructions ul li {
         font-size: 14px;
         padding-left: 0.5em;
     }
 }
 
-span.instructions ul li:before {
+.instructions ul li:before {
     content: "• ";
     color: #DEDC1C;
 }
@@ -3756,7 +3756,7 @@ ul.list-comodines img {
     }
 }
 
-span.instructions a p {
+.instructions a p {
     margin: 0;
 }
 
@@ -3766,12 +3766,12 @@ span.instructions a p {
     }
 }
 
-span.instructions a img {
+.instructions a img {
     width: 50px;
 }
 
 @media (max-width: 568px) {
-    span.instructions a img {
+    .instructions a img {
         width: 35px;
     }
 }
